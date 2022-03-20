@@ -119,7 +119,7 @@ const run = () => {
     }
 }
 
-// run();
+run();
 setInterval(() => run(), 60000);
 
 
