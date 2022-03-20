@@ -1,0 +1,16 @@
+{
+  "name": "olx-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Renat Shukiurov",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "jsdom": "^19.0.0",
+    "mongodb": "^4.4.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

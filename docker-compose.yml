@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  database:
+    image: mongo:latest
+    restart: always
+    container_name: mongo-cont
+    command: mongod --auth
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGODB_DB}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASS}
+    ports:
+      - ${MONGODB_LOCAL_PORT}:27017
+    volumes:
+      - ${MONGODB_LIB_PATH}:/data/db
+      - ${MONGODB_LOG_PATH}:/var/log/mongodb
+  node-web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    volumes:
+      - /app/node_modules
+      - ./:/app
