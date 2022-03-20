@@ -25,7 +25,7 @@ const GetAdvertsTable = async (url) => {
     return table;
 
 }
-const isStoredAdvert = async (url) => {
+const getStoredAdvert = async (url) => {
     const client = await MongoClient.connect(mongoConnUrl, { useNewUrlParser: true })
         .catch(err => { console.log(err); });
 
@@ -34,7 +34,7 @@ const isStoredAdvert = async (url) => {
     try {
         const db = client.db("olx-bot");
         const collection = db.collection("adverts");
-        return await collection.findOne({url})
+        return collection.findOne({url})
     } catch (err) {
         console.log(err);
     } finally {
@@ -107,11 +107,13 @@ const run = () => {
                     if(!linkItem) continue;
 
                     const advert = getAdvertObj(rows[i]);
-                    if (! await isStoredAdvert(advert.href)) {
-                        const msg = `Нове оголошення у місті <b>${advert.city}</b>\n<a href="${advert.href}">${advert.title}</a> \n\nЦіна <b>${advert.price}</b> \n\n<a href="${searchUrl}">Збережений пошук</a>`;
-                        await sendNotification(msg, advert.img);
-                        await saveAdvert(searchUrl, advert.href);
-                    }
+                    getStoredAdvert(advert.href).then(async res => {
+                        if (!res) {
+                            const msg = `Нове оголошення у місті <b>${advert.city}</b>\n<a href="${advert.href}">${advert.title}</a> \n\nЦіна <b>${advert.price}</b> \n\n<a href="${searchUrl}">Збережений пошук</a>`;
+                            await sendNotification(msg, advert.img);
+                            await saveAdvert(searchUrl, advert.href);
+                        }
+                    })
                 }
             })
     }
