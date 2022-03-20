@@ -91,7 +91,8 @@ const getAdvertObj = (row) => {
 
 const run = () => {
     const searchUrls = [
-        "https://www.olx.ua/uk/nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir/kolomyya/?search%5Bdist%5D=5"
+        "https://www.olx.ua/uk/nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir/kolomyya/?search%5Bdist%5D=5",
+        "https://www.olx.ua/uk/nedvizhimost/posutochno-pochasovo/kolomyya/?search%5Bdist%5D=5"
     ]
     for (const searchUrl of searchUrls) {
         GetAdvertsTable(searchUrl)
