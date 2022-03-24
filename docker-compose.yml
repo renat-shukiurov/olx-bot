@@ -15,6 +15,7 @@ services:
       - ${MONGODB_LIB_PATH}:/data/db
       - ${MONGODB_LOG_PATH}:/var/log/mongodb
   node-web:
+    restart: always
     build:
       context: ./
       dockerfile: Dockerfile
