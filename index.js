@@ -82,7 +82,7 @@ const getAdvertObj = (row) => {
     return {
         href: linkItem.href,
         title: linkItem.textContent.trim(),
-        img: row.querySelectorAll('.photo-cell img').item(0).src,
+        img: row.querySelectorAll('.photo-cell img').length ? row.querySelectorAll('.photo-cell img').item(0).src : "https://osbornegroupcre.com/wp-content/uploads/2016/02/missing-image-640x360.png",
         price: row.querySelectorAll('.price').item(0).textContent.trim(),
         city: row.querySelectorAll('.bottom-cell span').item(0).textContent.trim()
     }
