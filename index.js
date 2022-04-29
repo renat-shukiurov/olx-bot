@@ -91,9 +91,12 @@ const getAdvertObj = (row) => {
 
 const run = () => {
     const searchUrls = [
-        "https://www.olx.ua/uk/nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir/kolomyya/?search%5Bdist%5D=5",
-        "https://www.olx.ua/uk/nedvizhimost/posutochno-pochasovo/kolomyya/?search%5Bdist%5D=5",
-        "https://www.olx.ua/uk/nedvizhimost/doma/arenda-domov/kolomyya/?search%5Bdist%5D=5"
+        "https://www.olx.ua/uk/nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir/kolomyya/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH",
+        "https://www.olx.ua/uk/nedvizhimost/kvartiry/dolgosrochnaya-arenda-kvartir/mukachevo/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH",
+        "https://www.olx.ua/uk/nedvizhimost/posutochno-pochasovo/kolomyya/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH",
+        "https://www.olx.ua/uk/nedvizhimost/posutochno-pochasovo/mukachevo/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH",
+        "https://www.olx.ua/uk/nedvizhimost/doma/arenda-domov/kolomyya/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH",
+        "https://www.olx.ua/uk/nedvizhimost/doma/arenda-domov/mukachevo/?search%5Bdist%5D=5&search%5Border%5D=created_at:desc&currency=UAH"
     ]
     for (const searchUrl of searchUrls) {
         GetAdvertsTable(searchUrl)
